@@ -8,11 +8,6 @@ pipeline {
                 archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
-        stage('Test') { 
-
-        }
-        stage('Deploy') { 
-
-        }
+    
     }
 }
