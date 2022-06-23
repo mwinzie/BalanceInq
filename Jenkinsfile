@@ -11,6 +11,7 @@ pipeline {
                 echo 'Running build automation'
                 sh 'mvn clean install --settings configuration/settings.xml'
                 archiveArtifacts artifacts: '**/target/*.jar'
+                echo "${env.BUILD_NUMBER}"
             }
         }
        
