@@ -18,12 +18,11 @@ pipeline {
         }
         
        
-
         stage ('login Kubernetes'){
-            steps {
+          
                 withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://192.168.0.65:6443']) 
-                    
-                }
+                   
+                
         }
       
         
