@@ -120,5 +120,10 @@
   <activeProfiles>
     <activeProfile>fuse.repos</activeProfile>
   </activeProfiles>
-
+ 
+<pluginGroups>
+    <pluginGroup>io.fabric8</pluginGroup>
+    <pluginGroup>org.springframework.boot</pluginGroup>
+  </pluginGroups>
+ 
 </settings>
