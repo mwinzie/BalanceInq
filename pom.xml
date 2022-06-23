@@ -13,7 +13,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- configure the Fuse version you want to use here -->
-        <fuse.bom.version>7.4.0.fuse-sb2-740019-redhat-00005</fuse.bom.version>
+        <fuse.bom.version>7.10.0.fuse-sb2-7_10_0-00019-redhat-00002</fuse.bom.version>
         <!-- <fuse.bom.version>7.4.0.fuse-740036-redhat-00002</fuse.bom.version> -->
         
         <jedis.version>3.3.0</jedis.version>
