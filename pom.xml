@@ -222,8 +222,31 @@
     </build>
 
     <profiles>
+	    <profile>
+			<id>kubernetes-deployment</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>fabric8-maven-plugin</artifactId>
+						<version>${fuse.bom.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
         <profile>
-            <id>openshift</id>
+            <id>kubernetes</id>
             <build>
                 <plugins>
                     <plugin>
