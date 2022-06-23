@@ -224,15 +224,15 @@
     <profiles>
 	    <profile>
 			<id>kubernetes-deployment</id>
-			<activation>
+			<!--activation>
 				<activeByDefault>false</activeByDefault>
-			</activation>
+			</activation-->
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>fabric8-maven-plugin</artifactId>
-						<version>${fuse.bom.version}</version>
+						<version>4.3.0.fuse-790039-redhat-00001</version>
 						<executions>
 							<execution>
 								<goals>
@@ -250,9 +250,9 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.jboss.redhat-fuse</groupId>
+                        <groupId>io.fabric8</groupId>
                         <artifactId>fabric8-maven-plugin</artifactId>
-                        <version>${fuse.bom.version}</version>
+                        <version>4.3.0.fuse-790039-redhat-00001</version>
                         <executions>
                             <execution>
                                 <goals>
