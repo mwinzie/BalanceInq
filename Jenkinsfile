@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    
+     environment {
+        USER_NAME = "balance_inq=[${env.BUILD_NUMBER}]"
+        
+    }
     
     stages {
         stage('Run') {
@@ -11,10 +14,18 @@ pipeline {
                 echo 'Running build automation'
                 sh 'mvn clean install --settings configuration/settings.xml'
                 archiveArtifacts artifacts: '**/target/*.jar'
-                echo "${env.BUILD_NUMBER}"
             }
         }
+        
        
+
+        stage ('login Kubernetes'){
+            steps {
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://192.168.0.65:6443']) 
+                    
+                }
+        }
+      
         
         stage('build') {
              when {
@@ -22,7 +33,7 @@ pipeline {
             }
             steps {
                 echo 'Running build automation'
-                sh 'mvn --settings configuration/settings.xml fabric8:build -Pkubernetes-deployment -DskipTests -Dfabric8.generator.spring-boot.name=balance_inquiry:"${env.BUILD_ID}"'
+                sh 'mvn --settings configuration/settings.xml fabric8:build -Pkubernetes-deployment -DskipTests -Dfabric8.generator.spring-boot.name=USER_NAME'            
                 
             }
         }
@@ -87,19 +98,7 @@ pipeline {
         }
 
 
-        stage('DeployToProduction') {
-            when {
-                branch 'master'
-            }
-            steps {
-                milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
-            }
-        }
+        
     
         
     }
