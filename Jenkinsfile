@@ -25,16 +25,16 @@ pipeline {
 //             }
 //         }
       
-      
-        
+       
         stage('build') {
              when {
                 branch 'master'
             }
             steps {
                 echo 'Running build automation'
-                sh 'mvn --settings configuration/settings.xml fabric8:build -Pkubernetes-deployment -DskipTests -Dfabric8.generator.spring-boot.name=USER_NAME'            
+                sh 'mvn --settings configuration/settings.xml fabric8:build -Pkubernetes-deployment -DskipTests -Dfabric8.generator.spring-boot.name=USER_NAME'   
                 
+                 withCredentials([usernamePassword(credentialsId: 'kubeconfig')])
             }
         }
         
